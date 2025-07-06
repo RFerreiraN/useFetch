@@ -7,7 +7,6 @@ export const useFetch = (url) => {
     isLoading: true,
     errors: null
   });
-  const { data, isLoading, errors } = state;
 
   const fetchUsers = async () => {
     try {
@@ -18,7 +17,7 @@ export const useFetch = (url) => {
         isLoading: false,
         errors: null
       })
-      console.log(data)
+     
     } catch (error) {
       setState({
         data: null,
@@ -30,6 +29,7 @@ export const useFetch = (url) => {
   }
 
   useEffect(() => {
+    if(!url) return
     fetchUsers()
   }, [url])
 
